@@ -3,6 +3,11 @@ import { NextResponse } from "next/server"
 
 export async function POST(request: Request) {
   try {
+    console.log("[v0] DATABASE_URL exists:", !!process.env.DATABASE_URL)
+    console.log("[v0] DATABASE_URL length:", process.env.DATABASE_URL?.length ?? 0)
+    console.log("[v0] All env keys with DATABASE:", Object.keys(process.env).filter(k => k.includes("DATABASE")))
+    console.log("[v0] All env keys with NEON:", Object.keys(process.env).filter(k => k.includes("NEON")))
+    console.log("[v0] All env keys with PG:", Object.keys(process.env).filter(k => k.includes("PG") || k.includes("POSTGRES")))
     const sql = getDb()
     const body = await request.json()
 
