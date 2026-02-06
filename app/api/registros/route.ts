@@ -1,15 +1,14 @@
-import { getDb } from "@/lib/db"
-import { NextResponse } from "next/server"
+import { neon } from "@neondatabase/serverless";
+import { NextResponse } from "next/server";
+
+function getDb() {
+  return neon(process.env.DATABASE_URL!);
+}
 
 export async function POST(request: Request) {
   try {
-    console.log("[v0] DATABASE_URL exists:", !!process.env.DATABASE_URL)
-    console.log("[v0] DATABASE_URL length:", process.env.DATABASE_URL?.length ?? 0)
-    console.log("[v0] All env keys with DATABASE:", Object.keys(process.env).filter(k => k.includes("DATABASE")))
-    console.log("[v0] All env keys with NEON:", Object.keys(process.env).filter(k => k.includes("NEON")))
-    console.log("[v0] All env keys with PG:", Object.keys(process.env).filter(k => k.includes("PG") || k.includes("POSTGRES")))
-    const sql = getDb()
-    const body = await request.json()
+    const sql = getDb();
+    const body = await request.json();
 
     const {
       departamento,
@@ -38,101 +37,78 @@ export async function POST(request: Request) {
       ecpp_estimulo,
       ecpp_cuidados,
       ecpp_total,
-    } = body
+    } = body;
 
-    await sql(
-      `INSERT INTO registros (
+    await sql`
+      INSERT INTO registros (
         departamento, distrito, nombre_edi, tipo_grupo, fecha_recoleccion, evaluador_id,
         id_nino, sexo, fecha_nacimiento, edad_meses, rango_etario, asistencia_edi,
         id_cuidador, parentesco, edad_cuidador, nivel_educativo, acepta_consentimiento,
         ead_motor, ead_lenguaje, ead_cognitivo, ead_socioemocional, ead_total,
         ecpp_vinculo, ecpp_estimulo, ecpp_cuidados, ecpp_total
       ) VALUES (
-        $1, $2, $3, $4, $5, $6,
-        $7, $8, $9, $10, $11, $12,
-        $13, $14, $15, $16, $17,
-        $18, $19, $20, $21, $22,
-        $23, $24, $25, $26
-      )`,
-      [
-        departamento, distrito, nombre_edi, tipo_grupo, fecha_recoleccion, evaluador_id,
-        id_nino, sexo, fecha_nacimiento, edad_meses, rango_etario, asistencia_edi,
-        id_cuidador, parentesco, edad_cuidador, nivel_educativo, acepta_consentimiento,
-        ead_motor, ead_lenguaje, ead_cognitivo, ead_socioemocional, ead_total,
-        ecpp_vinculo, ecpp_estimulo, ecpp_cuidados, ecpp_total,
-      ]
-    )
+        ${departamento}, ${distrito}, ${nombre_edi}, ${tipo_grupo}, ${fecha_recoleccion}, ${evaluador_id},
+        ${id_nino}, ${sexo}, ${fecha_nacimiento}, ${edad_meses}, ${rango_etario}, ${asistencia_edi},
+        ${id_cuidador}, ${parentesco}, ${edad_cuidador}, ${nivel_educativo}, ${acepta_consentimiento},
+        ${ead_motor}, ${ead_lenguaje}, ${ead_cognitivo}, ${ead_socioemocional}, ${ead_total},
+        ${ecpp_vinculo}, ${ecpp_estimulo}, ${ecpp_cuidados}, ${ecpp_total}
+      )
+    `;
 
-    return NextResponse.json({ success: true }, { status: 201 })
+    return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
-    console.error("Error inserting registro:", error)
+    console.error("Error inserting registro:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Error al guardar el registro" },
-      { status: 500 },
-    )
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : "Error al guardar el registro",
+      },
+      { status: 500 }
+    );
   }
 }
 
 export async function GET(request: Request) {
   try {
-    const sql = getDb()
-    const { searchParams } = new URL(request.url)
+    const sql = getDb();
+    const { searchParams } = new URL(request.url);
 
-    const values: Record<string, string> = {}
+    const departamento = searchParams.get("departamento") || null;
+    const distrito = searchParams.get("distrito") || null;
+    const tipo_grupo = searchParams.get("tipo_grupo") || null;
+    const sexo = searchParams.get("sexo") || null;
+    const rango_etario = searchParams.get("rango_etario") || null;
+    const parentesco = searchParams.get("parentesco") || null;
+    const nivel_educativo = searchParams.get("nivel_educativo") || null;
+    const nombre_edi = searchParams.get("nombre_edi") || null;
 
-    const filters = [
-      "departamento",
-      "distrito",
-      "tipo_grupo",
-      "sexo",
-      "rango_etario",
-      "parentesco",
-      "nivel_educativo",
-      "nombre_edi",
-    ]
+    const rows = await sql`
+      SELECT * FROM registros
+      WHERE
+        (${departamento}::text IS NULL OR departamento = ${departamento})
+        AND (${distrito}::text IS NULL OR distrito = ${distrito})
+        AND (${tipo_grupo}::text IS NULL OR tipo_grupo::text = ${tipo_grupo})
+        AND (${sexo}::text IS NULL OR sexo::text = ${sexo})
+        AND (${rango_etario}::text IS NULL OR rango_etario::text = ${rango_etario})
+        AND (${parentesco}::text IS NULL OR parentesco::text = ${parentesco})
+        AND (${nivel_educativo}::text IS NULL OR nivel_educativo::text = ${nivel_educativo})
+        AND (${nombre_edi}::text IS NULL OR nombre_edi = ${nombre_edi})
+      ORDER BY created_at DESC
+    `;
 
-    for (const filter of filters) {
-      const value = searchParams.get(filter)
-      if (value) {
-        values[filter] = value
-      }
-    }
-
-    let rows
-    if (Object.keys(values).length === 0) {
-      rows = await sql("SELECT * FROM registros ORDER BY created_at DESC")
-    } else {
-      rows = await sql(
-        `SELECT * FROM registros
-        WHERE
-          ($1::text IS NULL OR departamento = $1)
-          AND ($2::text IS NULL OR distrito = $2)
-          AND ($3::text IS NULL OR tipo_grupo::text = $3)
-          AND ($4::text IS NULL OR sexo::text = $4)
-          AND ($5::text IS NULL OR rango_etario::text = $5)
-          AND ($6::text IS NULL OR parentesco::text = $6)
-          AND ($7::text IS NULL OR nivel_educativo::text = $7)
-          AND ($8::text IS NULL OR nombre_edi = $8)
-        ORDER BY created_at DESC`,
-        [
-          values.departamento ?? null,
-          values.distrito ?? null,
-          values.tipo_grupo ?? null,
-          values.sexo ?? null,
-          values.rango_etario ?? null,
-          values.parentesco ?? null,
-          values.nivel_educativo ?? null,
-          values.nombre_edi ?? null,
-        ]
-      )
-    }
-
-    return NextResponse.json(rows)
+    return NextResponse.json(rows);
   } catch (error) {
-    console.error("Error fetching registros:", error)
+    console.error("Error fetching registros:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Error al obtener registros" },
-      { status: 500 },
-    )
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : "Error al obtener registros",
+      },
+      { status: 500 }
+    );
   }
 }
