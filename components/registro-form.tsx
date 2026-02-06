@@ -95,9 +95,9 @@ function calcularEdadMeses(fechaNacimiento: string, fechaRecoleccion: string): n
 }
 
 function calcularRangoEtario(edadMeses: number): string {
-  if (edadMeses <= 11) return "1"
-  if (edadMeses <= 23) return "2"
-  if (edadMeses <= 36) return "3"
+  if (edadMeses >= 0 && edadMeses <= 11) return "1"
+  if (edadMeses >= 12 && edadMeses <= 23) return "2"
+  if (edadMeses >= 24 && edadMeses <= 36) return "3"
   return ""
 }
 
@@ -161,6 +161,16 @@ export function RegistroForm() {
 
     if (!form.acepta_consentimiento) {
       toast.error("El consentimiento es obligatorio para registrar datos.")
+      return
+    }
+
+    if (!form.rango_etario) {
+      toast.error("El rango etario no pudo calcularse. Verifique las fechas ingresadas (el nino/a debe tener entre 0 y 36 meses).")
+      return
+    }
+
+    if (!form.fecha_nacimiento || !form.fecha_recoleccion) {
+      toast.error("Las fechas de nacimiento y recoleccion son obligatorias.")
       return
     }
 
