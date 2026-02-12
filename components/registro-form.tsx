@@ -24,7 +24,9 @@ import {
   Brain,
   Heart,
   Loader2,
+  Paperclip,
 } from "lucide-react"
+import { FileUpload, type UploadedFile } from "@/components/file-upload"
 
 interface FormData {
   departamento: string
@@ -105,6 +107,7 @@ export function RegistroForm() {
   const router = useRouter()
   const [form, setForm] = useState<FormData>(initialFormData)
   const [loading, setLoading] = useState(false)
+  const [adjuntos, setAdjuntos] = useState<UploadedFile[]>([])
 
   const updateField = useCallback(
     (field: keyof FormData, value: string | number | boolean) => {
@@ -186,6 +189,7 @@ export function RegistroForm() {
         parentesco: Number(form.parentesco),
         nivel_educativo: Number(form.nivel_educativo),
         acepta_consentimiento: 1,
+        adjuntos,
       }
 
       const res = await fetch("/api/registros", {
@@ -201,6 +205,7 @@ export function RegistroForm() {
 
       toast.success("Registro guardado exitosamente")
       setForm(initialFormData)
+      setAdjuntos([])
       router.push("/datos")
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Error al guardar el registro")
@@ -632,6 +637,24 @@ export function RegistroForm() {
               <p className="text-xs text-muted-foreground">Suma automatica</p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Seccion 6: Adjuntos */}
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+              <Paperclip className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <CardTitle className="text-lg">Adjuntos</CardTitle>
+              <CardDescription>Documentos y fotos asociados a esta evaluacion (opcional)</CardDescription>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <FileUpload files={adjuntos} onChange={setAdjuntos} />
         </CardContent>
       </Card>
 

@@ -6,9 +6,10 @@ import { SiteHeader } from "@/components/site-header"
 import { DatosFilters, type Filters } from "@/components/datos-filters"
 import { DatosTable } from "@/components/datos-table"
 import { DatosCharts } from "@/components/datos-charts"
+import { DatosAdjuntos } from "@/components/datos-adjuntos"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { Loader2, Table2, BarChart3 } from "lucide-react"
+import { Loader2, Table2, BarChart3, Paperclip } from "lucide-react"
 
 const emptyFilters: Filters = {
   departamento: "",
@@ -108,12 +109,19 @@ export default function DatosPage() {
                   <Table2 className="h-4 w-4" />
                   Tabla
                 </TabsTrigger>
+                <TabsTrigger value="adjuntos" className="flex items-center gap-2">
+                  <Paperclip className="h-4 w-4" />
+                  Adjuntos
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="charts">
                 <DatosCharts data={registros} />
               </TabsContent>
               <TabsContent value="table">
                 <DatosTable data={registros} />
+              </TabsContent>
+              <TabsContent value="adjuntos">
+                <DatosAdjuntos data={registros} />
               </TabsContent>
             </Tabs>
           )}

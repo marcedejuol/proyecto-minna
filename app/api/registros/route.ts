@@ -37,7 +37,10 @@ export async function POST(request: Request) {
       ecpp_estimulo,
       ecpp_cuidados,
       ecpp_total,
+      adjuntos,
     } = body;
+
+    const adjuntosJson = JSON.stringify(adjuntos || []);
 
     await sql`
       INSERT INTO registros (
@@ -45,13 +48,13 @@ export async function POST(request: Request) {
         id_nino, sexo, fecha_nacimiento, edad_meses, rango_etario, asistencia_edi,
         id_cuidador, parentesco, edad_cuidador, nivel_educativo, acepta_consentimiento,
         ead_motor, ead_lenguaje, ead_cognitivo, ead_socioemocional, ead_total,
-        ecpp_vinculo, ecpp_estimulo, ecpp_cuidados, ecpp_total
+        ecpp_vinculo, ecpp_estimulo, ecpp_cuidados, ecpp_total, adjuntos
       ) VALUES (
         ${departamento}, ${distrito}, ${nombre_edi}, ${tipo_grupo}, ${fecha_recoleccion}, ${evaluador_id},
         ${id_nino}, ${sexo}, ${fecha_nacimiento}, ${edad_meses}, ${rango_etario}, ${asistencia_edi},
         ${id_cuidador}, ${parentesco}, ${edad_cuidador}, ${nivel_educativo}, ${acepta_consentimiento},
         ${ead_motor}, ${ead_lenguaje}, ${ead_cognitivo}, ${ead_socioemocional}, ${ead_total},
-        ${ecpp_vinculo}, ${ecpp_estimulo}, ${ecpp_cuidados}, ${ecpp_total}
+        ${ecpp_vinculo}, ${ecpp_estimulo}, ${ecpp_cuidados}, ${ecpp_total}, ${adjuntosJson}::jsonb
       )
     `;
 
