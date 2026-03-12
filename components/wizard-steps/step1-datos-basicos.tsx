@@ -130,7 +130,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                 </SelectContent>
               </Select>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 max-w-40">
               <Label htmlFor="fecha_recoleccion">Fecha de Recolección *</Label>
               <Input
                 id="fecha_recoleccion"
@@ -188,7 +188,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                 </SelectContent>
               </Select>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 max-w-40">
               <Label htmlFor="fecha_nacimiento">Fecha de Nacimiento *</Label>
               <Input
                 id="fecha_nacimiento"
