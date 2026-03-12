@@ -1,5 +1,5 @@
 import { SiteHeader } from "@/components/site-header"
-import { RegistroForm } from "@/components/registro-form"
+import { EvaluationWizard } from "@/components/evaluation-wizard"
 
 export default function Page() {
   return (
@@ -8,13 +8,13 @@ export default function Page() {
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-balance text-foreground">
-            Formulario de Registro
+            Nueva Evaluacion
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Complete todos los campos obligatorios (*) para registrar una nueva evaluacion.
+            Complete el proceso de evaluacion paso a paso: datos basicos, EAD-3, ECPP-P y resultados.
           </p>
         </div>
-        <RegistroForm />
+        <EvaluationWizard />
       </main>
     </div>
   )
