@@ -78,14 +78,14 @@ export function Step3Ecpp({ respuestas, onChange }: Props) {
             <div>
               <CardTitle className="text-lg">Escala de Competencia Parental Percibida (ECPP-P)</CardTitle>
               <CardDescription>
-                Evaluacion de las competencias del cuidador/a principal
+                Evaluación de las competencias del cuidador/a principal
               </CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground">
-            Para cada afirmacion, indique con que frecuencia usted realiza las siguientes acciones. 
+            Para cada afirmación, indique con qué frecuencia usted realiza las siguientes acciones. 
             Sea sincero/a en sus respuestas, no hay respuestas correctas o incorrectas.
           </p>
           <div className="mt-4">

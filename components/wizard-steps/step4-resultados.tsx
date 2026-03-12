@@ -95,7 +95,7 @@ export function Step4Resultados({ datosBasicos, resultados }: Props) {
               <BarChart3 className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <CardTitle className="text-lg">Resumen de la Evaluacion</CardTitle>
+              <CardTitle className="text-lg">Resumen de la Evaluación</CardTitle>
               <CardDescription>
                 ID: {datosBasicos.id_nino} | Edad: {datosBasicos.edad_meses} meses | 
                 {datosBasicos.sexo === "1" ? " Masculino" : " Femenino"}
@@ -114,7 +114,7 @@ export function Step4Resultados({ datosBasicos, resultados }: Props) {
                 <ClasificacionIcon className="h-6 w-6 text-white" />
               </div>
               <div>
-                <CardTitle className="text-lg">Clasificacion General EAD-3</CardTitle>
+                <CardTitle className="text-lg">Clasificación General EAD-3</CardTitle>
                 <CardDescription className={clasificacionConfig.color}>
                   {getClasificacionLabel(resultados.eadClasificacionGeneral)}
                 </CardDescription>
@@ -133,8 +133,8 @@ export function Step4Resultados({ datosBasicos, resultados }: Props) {
       {/* Detalle EAD-3 por area */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Resultados EAD-3 por Area</CardTitle>
-          <CardDescription>Puntaje directo por cada area de desarrollo</CardDescription>
+          <CardTitle className="text-lg">Resultados EAD-3 por Área</CardTitle>
+          <CardDescription>Puntaje directo por cada área de desarrollo</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -173,7 +173,7 @@ export function Step4Resultados({ datosBasicos, resultados }: Props) {
       {/* Leyenda de clasificaciones */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Interpretacion de Resultados EAD-3</CardTitle>
+          <CardTitle className="text-lg">Interpretación de Resultados EAD-3</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid gap-3 sm:grid-cols-3">
@@ -200,8 +200,8 @@ export function Step4Resultados({ datosBasicos, resultados }: Props) {
             </div>
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
-            Nota: Esta es una clasificacion simplificada de muestra. Los resultados definitivos 
-            deben obtenerse usando las tablas de baremos oficiales del EAD-3 segun el rango de edad.
+            Nota: Esta es una clasificación simplificada de muestra. Los resultados definitivos 
+            deben obtenerse usando las tablas de baremos oficiales del EAD-3 según el rango de edad.
           </p>
         </CardContent>
       </Card>

@@ -8,10 +8,10 @@ export default function Page() {
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-balance text-foreground">
-            Nueva Evaluacion
+            Nueva Evaluación
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Complete el proceso de evaluacion paso a paso: datos basicos, EAD-3, ECPP-P y resultados.
+            Complete el proceso de evaluación paso a paso: datos básicos, EAD-3, ECPP-P y resultados.
           </p>
         </div>
         <EvaluationWizard />

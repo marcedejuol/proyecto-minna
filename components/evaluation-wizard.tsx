@@ -30,7 +30,7 @@ import {
 } from "@/lib/evaluation-data"
 
 const STEPS = [
-  { id: 1, title: "Datos Basicos", icon: User },
+  { id: 1, title: "Datos Básicos", icon: User },
   { id: 2, title: "EAD-3", icon: ClipboardList },
   { id: 3, title: "ECPP-P", icon: Users },
   { id: 4, title: "Resultados", icon: BarChart3 },
@@ -158,7 +158,7 @@ export function EvaluationWizard() {
 
   const handleNext = () => {
     if (!canProceed()) {
-      toast.error("Por favor complete todos los campos obligatorios antes de continuar.")
+      toast.error("Por favor, complete todos los campos obligatorios antes de continuar.")
       return
     }
     if (currentStep < 4) {
@@ -222,10 +222,10 @@ export function EvaluationWizard() {
         throw new Error(data.error || "Error al guardar")
       }
 
-      toast.success("Evaluacion guardada exitosamente")
+      toast.success("Evaluación guardada exitosamente")
       router.push("/datos")
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Error al guardar la evaluacion")
+      toast.error(error instanceof Error ? error.message : "Error al guardar la evaluación")
     } finally {
       setLoading(false)
     }
@@ -297,7 +297,7 @@ export function EvaluationWizard() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg">Adjuntos (Opcional)</CardTitle>
-                <CardDescription>Documentos y fotos asociados a esta evaluacion</CardDescription>
+                <CardDescription>Documentos y fotos asociados a esta evaluación</CardDescription>
               </CardHeader>
               <CardContent>
                 <FileUpload files={adjuntos} onChange={setAdjuntos} />
@@ -345,7 +345,7 @@ export function EvaluationWizard() {
             ) : (
               <>
                 <Check className="h-4 w-4" />
-                Guardar Evaluacion
+                Guardar Evaluación
               </>
             )}
           </Button>

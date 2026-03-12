@@ -84,7 +84,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
               <MapPin className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <CardTitle className="text-lg">Identificacion del Registro</CardTitle>
+              <CardTitle className="text-lg">Identificación del Registro</CardTitle>
               <CardDescription>Datos de trazabilidad territorial y temporal</CardDescription>
             </div>
           </div>
@@ -125,13 +125,13 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                   <SelectValue placeholder="Seleccionar..." />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1">1 - Intervencion</SelectItem>
+                  <SelectItem value="1">1 - Intervención</SelectItem>
                   <SelectItem value="2">2 - Control (EDI Paraguari)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="fecha_recoleccion">Fecha de Recoleccion *</Label>
+              <Label htmlFor="fecha_recoleccion">Fecha de Recolección *</Label>
               <Input
                 id="fecha_recoleccion"
                 type="date"
@@ -160,18 +160,18 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
               <Baby className="h-5 w-5 text-accent" />
             </div>
             <div>
-              <CardTitle className="text-lg">Datos del Nino/a</CardTitle>
-              <CardDescription>Variables sociodemograficas del nino o la nina evaluado/a</CardDescription>
+              <CardTitle className="text-lg">Datos del Niño/a</CardTitle>
+              <CardDescription>Variables sociodemográficas del niño o la niña evaluado/a</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="id_nino">ID Nino/a *</Label>
+              <Label htmlFor="id_nino">ID Niño/a *</Label>
               <Input
                 id="id_nino"
-                placeholder="Codigo unico (anonimizado)"
+                placeholder="Código único (anonimizado)"
                 value={data.id_nino}
                 onChange={(e) => updateField("id_nino", e.target.value)}
               />
@@ -206,7 +206,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                 className="bg-muted"
                 value={data.edad_meses}
               />
-              <p className="text-xs text-muted-foreground">Calculado automaticamente</p>
+              <p className="text-xs text-muted-foreground">Calculado automáticamente</p>
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="rango_etario">Rango Etario</Label>
@@ -224,7 +224,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                         : ""
                 }
               />
-              <p className="text-xs text-muted-foreground">Calculado automaticamente</p>
+              <p className="text-xs text-muted-foreground">Calculado automáticamente</p>
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="asistencia_edi">Asistencia EDI *</Label>
@@ -233,7 +233,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                   <SelectValue placeholder="Seleccionar..." />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1">1 - Si</SelectItem>
+                  <SelectItem value="1">1 - Sí</SelectItem>
                   <SelectItem value="0">0 - No</SelectItem>
                 </SelectContent>
               </Select>
@@ -251,7 +251,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
             </div>
             <div>
               <CardTitle className="text-lg">Datos del Cuidador/a Principal</CardTitle>
-              <CardDescription>Informacion general del cuidador/a responsable</CardDescription>
+              <CardDescription>Información general del cuidador/a responsable</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -261,7 +261,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
               <Label htmlFor="id_cuidador">ID Cuidador/a *</Label>
               <Input
                 id="id_cuidador"
-                placeholder="Codigo del cuidador/a"
+                placeholder="Código del cuidador/a"
                 value={data.id_cuidador}
                 onChange={(e) => updateField("id_cuidador", e.target.value)}
               />
@@ -285,7 +285,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                 id="edad_cuidador"
                 type="number"
                 min={0}
-                placeholder="Anos cumplidos"
+                placeholder="Años cumplidos"
                 value={data.edad_cuidador || ""}
                 onChange={(e) => updateField("edad_cuidador", Number(e.target.value))}
               />

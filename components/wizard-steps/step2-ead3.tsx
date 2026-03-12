@@ -72,16 +72,16 @@ export function Step2Ead3({ edadMeses, respuestas, onChange }: Props) {
             <div>
               <CardTitle className="text-lg">Escala Abreviada del Desarrollo (EAD-3)</CardTitle>
               <CardDescription>
-                Evaluacion del desarrollo infantil - Rango de edad: {rangoInfo?.label || `${edadMeses} meses`}
+                Evaluación del desarrollo infantil - Rango de edad: {rangoInfo?.label || `${edadMeses} meses`}
               </CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground">
-            Para cada item, marque <strong>SI (1)</strong> si el nino/a cumple el criterio de respuesta, 
-            o <strong>NO (0)</strong> si no lo cumple. La puntuacion se basa en la observacion directa 
-            del nino/a.
+            Para cada ítem, marque <strong>SÍ (1)</strong> si el niño/a cumple el criterio de respuesta, 
+            o <strong>NO (0)</strong> si no lo cumple. La puntuación se basa en la observación directa 
+            del niño/a.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             {(["MG", "MF", "AL", "PS"] as const).map(area => {
@@ -114,7 +114,7 @@ export function Step2Ead3({ edadMeses, respuestas, onChange }: Props) {
                 <div>
                   <CardTitle className="text-lg">{AREA_NAMES[area]}</CardTitle>
                   <CardDescription>
-                    {areaItems.length} items a evaluar
+                    {areaItems.length} ítems a evaluar
                   </CardDescription>
                 </div>
               </div>
@@ -136,14 +136,14 @@ export function Step2Ead3({ edadMeses, respuestas, onChange }: Props) {
                           {index + 1}. {item.descripcion}
                         </h4>
                         <Badge variant="outline" className="shrink-0">
-                          Item {item.numero}
+                          Ítem {item.numero}
                         </Badge>
                       </div>
                     </div>
 
                     <div className="mb-4 flex flex-col gap-2 text-sm text-muted-foreground">
                       <div>
-                        <strong>Condicion de observacion:</strong> {item.condicionObservacion}
+                        <strong>Condición de observación:</strong> {item.condicionObservacion}
                       </div>
                       <div>
                         <strong>Criterio de respuesta:</strong> {item.criterioRespuesta}
@@ -164,7 +164,7 @@ export function Step2Ead3({ edadMeses, respuestas, onChange }: Props) {
                           htmlFor={`${item.id}-si`}
                           className="cursor-pointer font-medium text-green-600"
                         >
-                          SI (1) - Cumple
+                          SÍ (1) - Cumple
                         </Label>
                       </div>
                       <div className="flex items-center gap-2">

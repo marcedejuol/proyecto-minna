@@ -1,7 +1,7 @@
 "use client"
 
 // EAD-3: Escala Abreviada del Desarrollo - 3
-// 4 areas: Motricidad Gruesa (MG), Motricidad Fina (MF), Audicion-Lenguaje (AL), Personal-Social (PS)
+// 4 areas: Motricidad Gruesa (MG), Motricidad Fina (MF), Audición-Lenguaje (AL), Personal-Social (PS)
 // Items de muestra organizados por rango de edad
 
 export interface EadItem {
@@ -24,14 +24,14 @@ export interface EcppItem {
 
 // Rangos de edad EAD-3 (simplificado para 0-36 meses)
 export const RANGOS_EDAD_EAD = [
-  { rango: 1, label: "0 dias a 1 mes", mesesMin: 0, mesesMax: 1 },
-  { rango: 2, label: "1 mes y 1 dia a 3 meses", mesesMin: 1, mesesMax: 3 },
-  { rango: 3, label: "3 meses y 1 dia a 6 meses", mesesMin: 3, mesesMax: 6 },
-  { rango: 4, label: "6 meses y 1 dia a 9 meses", mesesMin: 6, mesesMax: 9 },
-  { rango: 5, label: "9 meses y 1 dia a 12 meses", mesesMin: 9, mesesMax: 12 },
-  { rango: 6, label: "12 meses y 1 dia a 18 meses", mesesMin: 12, mesesMax: 18 },
-  { rango: 7, label: "18 meses y 1 dia a 24 meses", mesesMin: 18, mesesMax: 24 },
-  { rango: 8, label: "24 meses y 1 dia a 36 meses", mesesMin: 24, mesesMax: 36 },
+  { rango: 1, label: "0 días a 1 mes", mesesMin: 0, mesesMax: 1 },
+  { rango: 2, label: "1 mes y 1 día a 3 meses", mesesMin: 1, mesesMax: 3 },
+  { rango: 3, label: "3 meses y 1 día a 6 meses", mesesMin: 3, mesesMax: 6 },
+  { rango: 4, label: "6 meses y 1 día a 9 meses", mesesMin: 6, mesesMax: 9 },
+  { rango: 5, label: "9 meses y 1 día a 12 meses", mesesMin: 9, mesesMax: 12 },
+  { rango: 6, label: "12 meses y 1 día a 18 meses", mesesMin: 12, mesesMax: 18 },
+  { rango: 7, label: "18 meses y 1 día a 24 meses", mesesMin: 18, mesesMax: 24 },
+  { rango: 8, label: "24 meses y 1 día a 36 meses", mesesMin: 24, mesesMax: 36 },
 ]
 
 export function getRangoEdadByMeses(meses: number): number {
@@ -52,9 +52,9 @@ export const EAD_ITEMS: EadItem[] = [
     numero: 1,
     area: "MG",
     rangoEdad: 1,
-    descripcion: "Realiza reflejo de busqueda y reflejo de succion",
+    descripcion: "Realiza reflejo de busqueda y reflejo de succión",
     condicionObservacion: "Pidale al cuidador que acaricie la comisura de la boca del bebe y luego que introduzca un dedo o chupete en su boca.",
-    criterioRespuesta: "Puntue si el bebe gira la cabeza hacia el lado que ha sido acariciado y si la boca inicia un movimiento de succion.",
+    criterioRespuesta: "Puntue si el bebe gira la cabeza hacia el lado que ha sido acariciado y si la boca inicia un movimiento de succión.",
     materiales: "Recurso humano"
   },
   {
@@ -63,7 +63,7 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 1,
     descripcion: "El reflejo de moro esta presente y es simetrico",
-    condicionObservacion: "Alce al bebe con sus dos brazos, poniendole una de sus manos bajo la cabeza y la otra en la parte baja de la espalda. Sostengalo al menos a 5 cm de la camilla, a continuacion, baje suave pero repentinamente sus manos hasta la camilla. Observe la reaccion del bebe.",
+    condicionObservacion: "Alce al bebe con sus dos brazos, poniendole una de sus manos bajo la cabeza y la otra en la parte baja de la espalda. Sostengalo al menos a 5 cm de la camilla, a continuacion, baje suave pero repentinamente sus manos hasta la camilla. Observe la reacción del bebe.",
     criterioRespuesta: "Puntue si observa abduccion de los brazos con extension de los antebrazos y apertura de las manos, luego una aduccion de los brazos y flexion de los antebrazos. Puede presentarse llanto.",
     materiales: "Recurso humano"
   },
@@ -73,8 +73,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 1,
     descripcion: "Mueve sus extremidades",
-    condicionObservacion: "Coloque al bebe acostado boca-arriba, con las piernas libres. Llame su atencion tocandolo o hablandole suavemente o pidale al cuidador que lo haga.",
-    criterioRespuesta: "Puntue si el bebe reacciona moviendo vigorosa y simetricamente todas las extremidades (ambos brazos y ambas piernas).",
+    condicionObservacion: "Coloque al bebe acostado boca-arriba, con las piernas libres. Llame su atención tocandolo o hablandole suavemente o pidale al cuidador que lo haga.",
+    criterioRespuesta: "Puntue si el bebe reaccióna moviendo vigorosa y simetricamente todas las extremidades (ambos brazos y ambas piernas).",
     materiales: "Recurso humano"
   },
   {
@@ -82,9 +82,9 @@ export const EAD_ITEMS: EadItem[] = [
     numero: 1,
     area: "MF",
     rangoEdad: 1,
-    descripcion: "Abre y cierra las manos de forma espontanea",
+    descripcion: "Abre y cierra las manos de forma espontánea",
     condicionObservacion: "Observe las manos del bebe mientras esta acostado boca-arriba en estado de alerta tranquila.",
-    criterioRespuesta: "Puntue si el bebe abre y cierra las manos espontaneamente al menos una vez durante la observacion.",
+    criterioRespuesta: "Puntue si el bebe abre y cierra las manos espontáneamente al menos una vez durante la observación.",
     materiales: "Recurso humano"
   },
   {
@@ -92,8 +92,8 @@ export const EAD_ITEMS: EadItem[] = [
     numero: 2,
     area: "MF",
     rangoEdad: 1,
-    descripcion: "Presenta reflejo de prension palmar",
-    condicionObservacion: "Con el bebe en posicion supina, toque la palma de su mano con su dedo indice.",
+    descripcion: "Presenta reflejo de prensión palmar",
+    condicionObservacion: "Con el bebe en posición supina, toque la palma de su mano con su dedo indice.",
     criterioRespuesta: "Puntue si el bebe cierra la mano atrapando su dedo.",
     materiales: "Recurso humano"
   },
@@ -112,9 +112,9 @@ export const EAD_ITEMS: EadItem[] = [
     numero: 1,
     area: "AL",
     rangoEdad: 1,
-    descripcion: "Reacciona al sonido",
+    descripcion: "Reaccióna al sonido",
     condicionObservacion: "Con el bebe en estado de alerta, produzca un sonido suave (como aplaudir o usar una sonaja) fuera de su campo visual.",
-    criterioRespuesta: "Puntue si el bebe reacciona al sonido cambiando su expresion, moviendo los ojos o el cuerpo.",
+    criterioRespuesta: "Puntue si el bebe reaccióna al sonido cambiando su expresión, moviendo los ojos o el cuerpo.",
     materiales: "Sonaja o similar"
   },
   {
@@ -123,7 +123,7 @@ export const EAD_ITEMS: EadItem[] = [
     area: "AL",
     rangoEdad: 1,
     descripcion: "Emite sonidos guturales",
-    condicionObservacion: "Observe si el bebe emite sonidos de forma espontanea o en respuesta a estimulos.",
+    condicionObservacion: "Observe si el bebe emite sonidos de forma espontánea o en respuesta a estimulos.",
     criterioRespuesta: "Puntue si el bebe emite sonidos guturales (sonidos de garganta) al menos una vez.",
     materiales: "Recurso humano"
   },
@@ -143,7 +143,7 @@ export const EAD_ITEMS: EadItem[] = [
     area: "PS",
     rangoEdad: 1,
     descripcion: "Mira el rostro del examinador o cuidador",
-    condicionObservacion: "Coloquese frente al bebe a una distancia de 20-30 cm y llame su atencion hablando suavemente.",
+    condicionObservacion: "Coloquese frente al bebe a una distancia de 20-30 cm y llame su atención hablando suavemente.",
     criterioRespuesta: "Puntue si el bebe mira su rostro o el del cuidador por al menos 2-3 segundos.",
     materiales: "Recurso humano"
   },
@@ -152,9 +152,9 @@ export const EAD_ITEMS: EadItem[] = [
     numero: 2,
     area: "PS",
     rangoEdad: 1,
-    descripcion: "Responde a estimulos con cambios en su expresion",
-    condicionObservacion: "Hable al bebe con diferentes tonos de voz o haga expresiones faciales exageradas.",
-    criterioRespuesta: "Puntue si el bebe muestra cambios en su expresion facial en respuesta.",
+    descripcion: "Responde a estimulos con cambios en su expresión",
+    condicionObservacion: "Hable al bebe con diferentes tonos de voz o haga expresiónes faciales exageradas.",
+    criterioRespuesta: "Puntue si el bebe muestra cambios en su expresión facial en respuesta.",
     materiales: "Recurso humano"
   },
   {
@@ -175,8 +175,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 5,
     descripcion: "Se sienta solo sin apoyo",
-    condicionObservacion: "Siente al nino/a en una superficie firme sin ningun apoyo.",
-    criterioRespuesta: "Puntue si el nino/a se mantiene sentado sin apoyo por al menos 30 segundos.",
+    condicionObservacion: "Siente al niño/a en una superficie firme sin ningun apoyo.",
+    criterioRespuesta: "Puntue si el niño/a se mantiene sentado sin apoyo por al menos 30 segundos.",
     materiales: "Superficie firme"
   },
   {
@@ -185,8 +185,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 5,
     descripcion: "Gatea o se desplaza de alguna forma",
-    condicionObservacion: "Coloque un juguete atractivo a cierta distancia del nino/a y animelo a alcanzarlo.",
-    criterioRespuesta: "Puntue si el nino/a se desplaza hacia el objeto de alguna manera (gateando, arrastandose, etc.).",
+    condicionObservacion: "Coloque un juguete atractivo a cierta distancia del niño/a y animelo a alcanzarlo.",
+    criterioRespuesta: "Puntue si el niño/a se desplaza hacia el objeto de alguna manera (gateando, arrastandose, etc.).",
     materiales: "Juguete atractivo"
   },
   {
@@ -195,8 +195,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 5,
     descripcion: "Se pone de pie con apoyo",
-    condicionObservacion: "Ofrezca al nino/a un apoyo estable (mueble, barandilla) y animelo a ponerse de pie.",
-    criterioRespuesta: "Puntue si el nino/a logra ponerse de pie sosteniendose del apoyo.",
+    condicionObservacion: "Ofrezca al niño/a un apoyo estable (mueble, barandilla) y animelo a ponerse de pie.",
+    criterioRespuesta: "Puntue si el niño/a logra ponerse de pie sosteniendose del apoyo.",
     materiales: "Apoyo estable"
   },
   {
@@ -205,9 +205,9 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MF",
     rangoEdad: 5,
     descripcion: "Toma objetos con pinza inferior",
-    condicionObservacion: "Ofrezca al nino/a un objeto pequeno (como una bolita de cereal).",
-    criterioRespuesta: "Puntue si el nino/a toma el objeto usando el pulgar y los dedos (pinza inferior).",
-    materiales: "Objeto pequeno seguro"
+    condicionObservacion: "Ofrezca al niño/a un objeto pequeño (como una bolita de cereal).",
+    criterioRespuesta: "Puntue si el niño/a toma el objeto usando el pulgar y los dedos (pinza inferior).",
+    materiales: "Objeto pequeño seguro"
   },
   {
     id: "mf-5-2",
@@ -215,9 +215,9 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MF",
     rangoEdad: 5,
     descripcion: "Pasa objetos de una mano a otra",
-    condicionObservacion: "Ofrezca un juguete al nino/a y observe como lo manipula.",
-    criterioRespuesta: "Puntue si el nino/a pasa el objeto de una mano a la otra.",
-    materiales: "Juguete pequeno"
+    condicionObservacion: "Ofrezca un juguete al niño/a y observe como lo manipula.",
+    criterioRespuesta: "Puntue si el niño/a pasa el objeto de una mano a la otra.",
+    materiales: "Juguete pequeño"
   },
   {
     id: "mf-5-3",
@@ -225,8 +225,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MF",
     rangoEdad: 5,
     descripcion: "Golpea dos objetos entre si",
-    condicionObservacion: "Ofrezca al nino/a dos cubos o juguetes pequenos.",
-    criterioRespuesta: "Puntue si el nino/a golpea los dos objetos entre si voluntariamente.",
+    condicionObservacion: "Ofrezca al niño/a dos cubos o juguetes pequeños.",
+    criterioRespuesta: "Puntue si el niño/a golpea los dos objetos entre si voluntariamente.",
     materiales: "Dos cubos o juguetes"
   },
   {
@@ -235,8 +235,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "AL",
     rangoEdad: 5,
     descripcion: "Balbucea silabas (ma, pa, ba)",
-    condicionObservacion: "Observe la vocalizacion espontanea del nino/a o animelo a vocalizar.",
-    criterioRespuesta: "Puntue si el nino/a produce silabas como ma, pa, ba, da.",
+    condicionObservacion: "Observe la vocalización espontánea del niño/a o animelo a vocalizar.",
+    criterioRespuesta: "Puntue si el niño/a produce silabas como ma, pa, ba, da.",
     materiales: "Recurso humano"
   },
   {
@@ -245,8 +245,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "AL",
     rangoEdad: 5,
     descripcion: "Responde a su nombre",
-    condicionObservacion: "Llame al nino/a por su nombre sin hacer gestos ni senales visuales.",
-    criterioRespuesta: "Puntue si el nino/a voltea o responde de alguna forma al escuchar su nombre.",
+    condicionObservacion: "Llame al niño/a por su nombre sin hacer gestos ni senales visuales.",
+    criterioRespuesta: "Puntue si el niño/a voltea o responde de alguna forma al escuchar su nombre.",
     materiales: "Recurso humano"
   },
   {
@@ -255,8 +255,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "AL",
     rangoEdad: 5,
     descripcion: "Entiende el 'no'",
-    condicionObservacion: "Cuando el nino/a este haciendo algo, digale 'no' con tono firme.",
-    criterioRespuesta: "Puntue si el nino/a detiene la accion o muestra que comprende la prohibicion.",
+    condicionObservacion: "Cuando el niño/a este haciendo algo, digale 'no' con tono firme.",
+    criterioRespuesta: "Puntue si el niño/a detiene la acción o muestra que comprende la prohibición.",
     materiales: "Recurso humano"
   },
   {
@@ -264,9 +264,9 @@ export const EAD_ITEMS: EadItem[] = [
     numero: 13,
     area: "PS",
     rangoEdad: 5,
-    descripcion: "Muestra ansiedad ante extranos",
-    condicionObservacion: "Observe la reaccion del nino/a ante personas desconocidas.",
-    criterioRespuesta: "Puntue si el nino/a muestra cautela, llanto o busca al cuidador ante extranos.",
+    descripcion: "Muestra ansiedad ante extraños",
+    condicionObservacion: "Observe la reacción del niño/a ante personas desconocidas.",
+    criterioRespuesta: "Puntue si el niño/a muestra cautela, llanto o busca al cuidador ante extraños.",
     materiales: "Recurso humano"
   },
   {
@@ -275,8 +275,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "PS",
     rangoEdad: 5,
     descripcion: "Imita gestos simples",
-    condicionObservacion: "Realice gestos simples frente al nino/a como aplaudir o decir adios.",
-    criterioRespuesta: "Puntue si el nino/a intenta imitar el gesto.",
+    condicionObservacion: "Realice gestos simples frente al niño/a como aplaudir o decir adios.",
+    criterioRespuesta: "Puntue si el niño/a intenta imitar el gesto.",
     materiales: "Recurso humano"
   },
   {
@@ -285,8 +285,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "PS",
     rangoEdad: 5,
     descripcion: "Juega a taparse y descubrirse",
-    condicionObservacion: "Juegue al 'cu-cu' con el nino/a cubriendose el rostro.",
-    criterioRespuesta: "Puntue si el nino/a participa del juego, anticipando o descubriendose.",
+    condicionObservacion: "Juegue al 'cu-cu' con el niño/a cubriendose el rostro.",
+    criterioRespuesta: "Puntue si el niño/a participa del juego, anticipando o descubriendose.",
     materiales: "Tela o manos"
   },
 
@@ -297,8 +297,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 7,
     descripcion: "Camina solo",
-    condicionObservacion: "Observe si el nino/a camina de forma independiente.",
-    criterioRespuesta: "Puntue si el nino/a camina al menos 10 pasos sin apoyo.",
+    condicionObservacion: "Observe si el niño/a camina de forma independiente.",
+    criterioRespuesta: "Puntue si el niño/a camina al menos 10 pasos sin apoyo.",
     materiales: "Espacio abierto"
   },
   {
@@ -307,8 +307,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 7,
     descripcion: "Patea una pelota",
-    condicionObservacion: "Coloque una pelota frente al nino/a y animelo a patearla.",
-    criterioRespuesta: "Puntue si el nino/a patea la pelota hacia adelante.",
+    condicionObservacion: "Coloque una pelota frente al niño/a y animelo a patearla.",
+    criterioRespuesta: "Puntue si el niño/a patea la pelota hacia adelante.",
     materiales: "Pelota"
   },
   {
@@ -317,8 +317,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 7,
     descripcion: "Sube escaleras con ayuda",
-    condicionObservacion: "Acompane al nino/a a una escalera y ofrezca su mano como apoyo.",
-    criterioRespuesta: "Puntue si el nino/a sube al menos 3 escalones con ayuda.",
+    condicionObservacion: "Acompane al niño/a a una escalera y ofrezca su mano como apoyo.",
+    criterioRespuesta: "Puntue si el niño/a sube al menos 3 escalones con ayuda.",
     materiales: "Escalera segura"
   },
   {
@@ -327,8 +327,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MF",
     rangoEdad: 7,
     descripcion: "Construye torre de 3-4 cubos",
-    condicionObservacion: "Proporcione cubos al nino/a y muestre como hacer una torre.",
-    criterioRespuesta: "Puntue si el nino/a construye una torre de al menos 3 cubos.",
+    condicionObservacion: "Proporcione cubos al niño/a y muestre como hacer una torre.",
+    criterioRespuesta: "Puntue si el niño/a construye una torre de al menos 3 cubos.",
     materiales: "Cubos de madera"
   },
   {
@@ -337,8 +337,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MF",
     rangoEdad: 7,
     descripcion: "Hace garabatos espontaneos",
-    condicionObservacion: "Ofrezca papel y crayones al nino/a.",
-    criterioRespuesta: "Puntue si el nino/a hace trazos o garabatos en el papel.",
+    condicionObservacion: "Ofrezca papel y crayones al niño/a.",
+    criterioRespuesta: "Puntue si el niño/a hace trazos o garabatos en el papel.",
     materiales: "Papel y crayones"
   },
   {
@@ -347,8 +347,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MF",
     rangoEdad: 7,
     descripcion: "Pasa paginas de un libro",
-    condicionObservacion: "Ofrezca un libro con paginas gruesas al nino/a.",
-    criterioRespuesta: "Puntue si el nino/a pasa las paginas (aunque sean varias a la vez).",
+    condicionObservacion: "Ofrezca un libro con paginas gruesas al niño/a.",
+    criterioRespuesta: "Puntue si el niño/a pasa las paginas (aunque sean varias a la vez).",
     materiales: "Libro infantil"
   },
   {
@@ -357,8 +357,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "AL",
     rangoEdad: 7,
     descripcion: "Dice al menos 10 palabras",
-    condicionObservacion: "Pregunte al cuidador cuantas palabras dice el nino/a y cuales.",
-    criterioRespuesta: "Puntue si el cuidador reporta al menos 10 palabras que el nino/a usa consistentemente.",
+    condicionObservacion: "Pregunte al cuidador cuantas palabras dice el niño/a y cuales.",
+    criterioRespuesta: "Puntue si el cuidador reporta al menos 10 palabras que el niño/a usa consistentemente.",
     materiales: "Recurso humano"
   },
   {
@@ -367,8 +367,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "AL",
     rangoEdad: 7,
     descripcion: "Senala objetos cuando se le nombran",
-    condicionObservacion: "Pida al nino/a que senale objetos conocidos: 'Donde esta la pelota?'",
-    criterioRespuesta: "Puntue si el nino/a senala correctamente al menos 3 objetos.",
+    condicionObservacion: "Pida al niño/a que senale objetos conocidos: 'Donde esta la pelota?'",
+    criterioRespuesta: "Puntue si el niño/a senala correctamente al menos 3 objetos.",
     materiales: "Objetos variados"
   },
   {
@@ -376,9 +376,9 @@ export const EAD_ITEMS: EadItem[] = [
     numero: 21,
     area: "AL",
     rangoEdad: 7,
-    descripcion: "Sigue instrucciones simples",
-    condicionObservacion: "De instrucciones simples: 'Dame la pelota', 'Sientate'.",
-    criterioRespuesta: "Puntue si el nino/a sigue al menos 2 instrucciones simples.",
+    descripcion: "Sigue instrucciónes simples",
+    condicionObservacion: "De instrucciónes simples: 'Dame la pelota', 'Sientate'.",
+    criterioRespuesta: "Puntue si el niño/a sigue al menos 2 instrucciónes simples.",
     materiales: "Objetos varios"
   },
   {
@@ -387,9 +387,9 @@ export const EAD_ITEMS: EadItem[] = [
     area: "PS",
     rangoEdad: 7,
     descripcion: "Imita actividades domesticas",
-    condicionObservacion: "Observe o pregunte si el nino/a imita barrer, cocinar, etc.",
-    criterioRespuesta: "Puntue si el nino/a imita al menos una actividad domestica.",
-    materiales: "Juguetes de imitacion"
+    condicionObservacion: "Observe o pregunte si el niño/a imita barrer, cocinar, etc.",
+    criterioRespuesta: "Puntue si el niño/a imita al menos una actividad domestica.",
+    materiales: "Juguetes de imitación"
   },
   {
     id: "ps-7-2",
@@ -397,8 +397,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "PS",
     rangoEdad: 7,
     descripcion: "Come solo con cuchara",
-    condicionObservacion: "Pregunte al cuidador o observe si el nino/a come solo.",
-    criterioRespuesta: "Puntue si el nino/a lleva la cuchara a la boca aunque derrame algo.",
+    condicionObservacion: "Pregunte al cuidador o observe si el niño/a come solo.",
+    criterioRespuesta: "Puntue si el niño/a lleva la cuchara a la boca aunque derrame algo.",
     materiales: "Cuchara y alimento"
   },
   {
@@ -407,8 +407,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "PS",
     rangoEdad: 7,
     descripcion: "Avisa cuando esta mojado o sucio",
-    condicionObservacion: "Pregunte al cuidador si el nino/a avisa o se queja cuando necesita cambio de panal.",
-    criterioRespuesta: "Puntue si el nino/a avisa de alguna forma cuando esta mojado o sucio.",
+    condicionObservacion: "Pregunte al cuidador si el niño/a avisa o se queja cuando necesita cambio de panal.",
+    criterioRespuesta: "Puntue si el niño/a avisa de alguna forma cuando esta mojado o sucio.",
     materiales: "Recurso humano"
   },
 
@@ -418,9 +418,9 @@ export const EAD_ITEMS: EadItem[] = [
     numero: 22,
     area: "MG",
     rangoEdad: 8,
-    descripcion: "Corre con coordinacion",
-    condicionObservacion: "Observe o pida al nino/a que corra en un espacio seguro.",
-    criterioRespuesta: "Puntue si el nino/a corre con buena coordinacion, sin caerse frecuentemente.",
+    descripcion: "Corre con coordinación",
+    condicionObservacion: "Observe o pida al niño/a que corra en un espacio seguro.",
+    criterioRespuesta: "Puntue si el niño/a corre con buena coordinación, sin caerse frecuentemente.",
     materiales: "Espacio abierto"
   },
   {
@@ -429,8 +429,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 8,
     descripcion: "Salta con ambos pies",
-    condicionObservacion: "Pida al nino/a que salte con los dos pies juntos.",
-    criterioRespuesta: "Puntue si el nino/a logra despegar ambos pies del suelo simultaneamente.",
+    condicionObservacion: "Pida al niño/a que salte con los dos pies juntos.",
+    criterioRespuesta: "Puntue si el niño/a logra despegar ambos pies del suelo simultaneamente.",
     materiales: "Espacio seguro"
   },
   {
@@ -439,7 +439,7 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MG",
     rangoEdad: 8,
     descripcion: "Sube escaleras alternando pies",
-    condicionObservacion: "Observe como el nino/a sube escaleras.",
+    condicionObservacion: "Observe como el niño/a sube escaleras.",
     criterioRespuesta: "Puntue si alterna los pies al subir (no coloca ambos pies en cada escalon).",
     materiales: "Escalera segura"
   },
@@ -459,8 +459,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "MF",
     rangoEdad: 8,
     descripcion: "Copia un circulo",
-    condicionObservacion: "Dibuje un circulo y pida al nino/a que haga uno igual.",
-    criterioRespuesta: "Puntue si el nino/a dibuja una forma circular cerrada.",
+    condicionObservacion: "Dibuje un circulo y pida al niño/a que haga uno igual.",
+    criterioRespuesta: "Puntue si el niño/a dibuja una forma circular cerrada.",
     materiales: "Papel y lapiz"
   },
   {
@@ -470,7 +470,7 @@ export const EAD_ITEMS: EadItem[] = [
     rangoEdad: 8,
     descripcion: "Ensarta cuentas grandes",
     condicionObservacion: "Ofrezca cuentas grandes y un cordon grueso.",
-    criterioRespuesta: "Puntue si el nino/a ensarta al menos 3 cuentas.",
+    criterioRespuesta: "Puntue si el niño/a ensarta al menos 3 cuentas.",
     materiales: "Cuentas y cordon"
   },
   {
@@ -479,8 +479,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "AL",
     rangoEdad: 8,
     descripcion: "Usa frases de 2-3 palabras",
-    condicionObservacion: "Observe el lenguaje espontaneo del nino/a o pregunte al cuidador.",
-    criterioRespuesta: "Puntue si el nino/a combina 2-3 palabras: 'mama agua', 'quiero mas'.",
+    condicionObservacion: "Observe el lenguaje espontaneo del niño/a o pregunte al cuidador.",
+    criterioRespuesta: "Puntue si el niño/a combina 2-3 palabras: 'mama agua', 'quiero mas'.",
     materiales: "Recurso humano"
   },
   {
@@ -489,8 +489,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "AL",
     rangoEdad: 8,
     descripcion: "Dice su nombre cuando se le pregunta",
-    condicionObservacion: "Pregunte al nino/a: 'Como te llamas?'",
-    criterioRespuesta: "Puntue si el nino/a dice su nombre o apodo.",
+    condicionObservacion: "Pregunte al niño/a: 'Como te llamas?'",
+    criterioRespuesta: "Puntue si el niño/a dice su nombre o apodo.",
     materiales: "Recurso humano"
   },
   {
@@ -499,7 +499,7 @@ export const EAD_ITEMS: EadItem[] = [
     area: "AL",
     rangoEdad: 8,
     descripcion: "Identifica partes del cuerpo",
-    condicionObservacion: "Pida al nino/a: 'Donde estan tus ojos/nariz/boca?'",
+    condicionObservacion: "Pida al niño/a: 'Donde estan tus ojos/nariz/boca?'",
     criterioRespuesta: "Puntue si senala correctamente al menos 4 partes del cuerpo.",
     materiales: "Recurso humano"
   },
@@ -509,8 +509,8 @@ export const EAD_ITEMS: EadItem[] = [
     area: "PS",
     rangoEdad: 8,
     descripcion: "Se viste con ayuda minima",
-    condicionObservacion: "Pregunte al cuidador sobre la autonomia del nino/a al vestirse.",
-    criterioRespuesta: "Puntue si el nino/a colabora activamente y hace parte del vestido solo.",
+    condicionObservacion: "Pregunte al cuidador sobre la autonomía del niño/a al vestirse.",
+    criterioRespuesta: "Puntue si el niño/a colabora activamente y hace parte del vestido solo.",
     materiales: "Ropa simple"
   },
   {
@@ -518,9 +518,9 @@ export const EAD_ITEMS: EadItem[] = [
     numero: 23,
     area: "PS",
     rangoEdad: 8,
-    descripcion: "Juega con otros ninos",
-    condicionObservacion: "Pregunte al cuidador sobre el juego social del nino/a.",
-    criterioRespuesta: "Puntue si el nino/a interactua con otros ninos durante el juego (no solo paralelo).",
+    descripcion: "Juega con otros niños",
+    condicionObservacion: "Pregunte al cuidador sobre el juego social del niño/a.",
+    criterioRespuesta: "Puntue si el niño/a interactua con otros niños durante el juego (no solo paralelo).",
     materiales: "Recurso humano"
   },
   {
@@ -530,7 +530,7 @@ export const EAD_ITEMS: EadItem[] = [
     rangoEdad: 8,
     descripcion: "Controla esfinteres durante el dia",
     condicionObservacion: "Pregunte al cuidador sobre el control de esfinteres.",
-    criterioRespuesta: "Puntue si el nino/a avisa y controla esfinteres durante el dia (puede usar panal de noche).",
+    criterioRespuesta: "Puntue si el niño/a avisa y controla esfinteres durante el dia (puede usar panal de noche).",
     materiales: "Recurso humano"
   },
 ]
@@ -588,11 +588,11 @@ export const AREA_NAMES = {
 
 // Nombres de dimensiones ECPP-P
 export const DIMENSION_NAMES = {
-  implicacion: "Implicacion Escolar",
-  dedicacion: "Dedicacion Personal",
+  implicacion: "Implicación Escolar",
+  dedicacion: "Dedicación Personal",
   ocio: "Ocio Compartido",
   asesoramiento: "Asesoramiento/Orientacion",
-  rol: "Asuncion del Rol",
+  rol: "Asunción del Rol",
 }
 
 // Funcion para obtener items de EAD-3 segun la edad
