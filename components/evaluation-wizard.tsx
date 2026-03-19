@@ -43,24 +43,27 @@ export function EvaluationWizard() {
   const [adjuntos, setAdjuntos] = useState<UploadedFile[]>([])
 
   // Step 1: Datos basicos
-  const [datosBasicos, setDatosBasicos] = useState<DatosBasicosData>({
-    departamento: "",
-    distrito: "",
-    nombre_edi: "",
-    tipo_grupo: "",
-    fecha_recoleccion: "",
-    evaluador_id: "",
-    id_nino: "",
-    sexo: "",
-    fecha_nacimiento: "",
-    edad_meses: 0,
-    rango_etario: "",
-    asistencia_edi: "",
-    id_cuidador: "",
-    parentesco: "",
-    edad_cuidador: 0,
-    nivel_educativo: "",
-    acepta_consentimiento: false,
+  const [datosBasicos, setDatosBasicos] = useState<DatosBasicosData>(() => {
+    const hoy = new Date().toISOString().split("T")[0]
+    return {
+      departamento: "",
+      distrito: "",
+      nombre_edi: "",
+      tipo_grupo: "",
+      fecha_recoleccion: hoy,
+      evaluador_id: "",
+      id_nino: "",
+      sexo: "",
+      fecha_nacimiento: "",
+      edad_meses: 0,
+      rango_etario: "",
+      asistencia_edi: "",
+      id_cuidador: "",
+      parentesco: "",
+      edad_cuidador: 0,
+      nivel_educativo: "",
+      acepta_consentimiento: false,
+    }
   })
 
   // Step 2: EAD-3 respuestas
