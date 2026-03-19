@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import {
   Table,
   TableBody,
@@ -10,7 +11,9 @@ import {
 } from "@/components/ui/table"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { Pencil } from "lucide-react"
 
 interface Registro {
   id_registro: number
@@ -20,6 +23,8 @@ interface Registro {
   tipo_grupo: number
   fecha_recoleccion: string
   evaluador_id: string
+  nombre_nino?: string
+  cedula_nino?: string
   id_nino: string
   sexo: number
   fecha_nacimiento: string
@@ -46,7 +51,10 @@ const sexoLabels: Record<number, string> = { 1: "M", 2: "F" }
 const rangoLabels: Record<number, string> = {
   1: "0-11m",
   2: "12-23m",
-  3: "24-36m",
+  3: "24-35m",
+  4: "36-47m",
+  5: "48-59m",
+  6: "60-72m",
 }
 const parentescoLabels: Record<number, string> = {
   1: "Madre",
@@ -60,7 +68,7 @@ const nivelLabels: Record<number, string> = {
   4: "Terciaria",
 }
 const tipoGrupoLabels: Record<number, string> = {
-  1: "Intervencion",
+  1: "Intervención",
   2: "Control",
 }
 
@@ -85,7 +93,10 @@ export function DatosTable({ data }: { data: Registro[] }) {
             <Table>
               <TableHeader>
                 <TableRow className="bg-muted/50">
+                  <TableHead className="w-[50px] font-semibold"></TableHead>
                   <TableHead className="w-[60px] font-semibold">ID</TableHead>
+                  <TableHead className="font-semibold">Nombre</TableHead>
+                  <TableHead className="font-semibold">Cédula</TableHead>
                   <TableHead className="font-semibold">Departamento</TableHead>
                   <TableHead className="font-semibold">Distrito</TableHead>
                   <TableHead className="font-semibold">EDI</TableHead>
@@ -109,7 +120,16 @@ export function DatosTable({ data }: { data: Registro[] }) {
               <TableBody>
                 {data.map((row) => (
                   <TableRow key={row.id_registro} className="hover:bg-muted/30">
+                    <TableCell>
+                      <Button variant="ghost" size="icon" asChild className="h-8 w-8">
+                        <Link href={`/editar/${row.id_registro}`}>
+                          <Pencil className="h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </TableCell>
                     <TableCell className="font-mono text-xs">{row.id_registro}</TableCell>
+                    <TableCell className="text-sm font-medium">{row.nombre_nino || "-"}</TableCell>
+                    <TableCell className="font-mono text-xs">{row.cedula_nino || "-"}</TableCell>
                     <TableCell className="text-sm">{row.departamento}</TableCell>
                     <TableCell className="text-sm">{row.distrito}</TableCell>
                     <TableCell className="max-w-[120px] truncate text-sm">{row.nombre_edi}</TableCell>
