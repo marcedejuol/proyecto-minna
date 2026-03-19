@@ -22,7 +22,7 @@ export interface EcppItem {
   pregunta: string
 }
 
-// Rangos de edad EAD-3 (simplificado para 0-36 meses)
+// Rangos de edad EAD-3 (0-72 meses / 6 años)
 export const RANGOS_EDAD_EAD = [
   { rango: 1, label: "0 días a 1 mes", mesesMin: 0, mesesMax: 1 },
   { rango: 2, label: "1 mes y 1 día a 3 meses", mesesMin: 1, mesesMax: 3 },
@@ -32,6 +32,9 @@ export const RANGOS_EDAD_EAD = [
   { rango: 6, label: "12 meses y 1 día a 18 meses", mesesMin: 12, mesesMax: 18 },
   { rango: 7, label: "18 meses y 1 día a 24 meses", mesesMin: 18, mesesMax: 24 },
   { rango: 8, label: "24 meses y 1 día a 36 meses", mesesMin: 24, mesesMax: 36 },
+  { rango: 9, label: "36 meses y 1 día a 48 meses", mesesMin: 36, mesesMax: 48 },
+  { rango: 10, label: "48 meses y 1 día a 60 meses", mesesMin: 48, mesesMax: 60 },
+  { rango: 11, label: "60 meses y 1 día a 72 meses", mesesMin: 60, mesesMax: 72 },
 ]
 
 export function getRangoEdadByMeses(meses: number): number {
@@ -40,7 +43,7 @@ export function getRangoEdadByMeses(meses: number): number {
       return rango.rango
     }
   }
-  return 8 // Default al ultimo rango si es mayor
+  return 11 // Default al ultimo rango si es mayor
 }
 
 // Items de muestra EAD-3 (3 items por area por rango - total 12 items por rango)

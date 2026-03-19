@@ -52,7 +52,10 @@ function calcularEdadMeses(fechaNacimiento: string, fechaRecoleccion: string): n
 function calcularRangoEtario(edadMeses: number): string {
   if (edadMeses >= 0 && edadMeses <= 11) return "1"
   if (edadMeses >= 12 && edadMeses <= 23) return "2"
-  if (edadMeses >= 24 && edadMeses <= 36) return "3"
+  if (edadMeses >= 24 && edadMeses <= 35) return "3"
+  if (edadMeses >= 36 && edadMeses <= 47) return "4"
+  if (edadMeses >= 48 && edadMeses <= 59) return "5"
+  if (edadMeses >= 60 && edadMeses <= 72) return "6"
   return ""
 }
 
@@ -220,8 +223,14 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                     : data.rango_etario === "2"
                       ? "2 - (12-23 meses)"
                       : data.rango_etario === "3"
-                        ? "3 - (24-36 meses)"
-                        : ""
+                        ? "3 - (24-35 meses)"
+                        : data.rango_etario === "4"
+                          ? "4 - (36-47 meses)"
+                          : data.rango_etario === "5"
+                            ? "5 - (48-59 meses)"
+                            : data.rango_etario === "6"
+                              ? "6 - (60-72 meses)"
+                              : ""
                 }
               />
               <p className="text-xs text-muted-foreground">Calculado automáticamente</p>
