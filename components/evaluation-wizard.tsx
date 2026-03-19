@@ -52,6 +52,8 @@ export function EvaluationWizard() {
       tipo_grupo: "",
       fecha_recoleccion: hoy,
       evaluador_id: "",
+      nombre_nino: "",
+      cedula_nino: "",
       id_nino: "",
       sexo: "",
       fecha_nacimiento: "",
@@ -135,7 +137,7 @@ export function EvaluationWizard() {
           datosBasicos.tipo_grupo &&
           datosBasicos.fecha_recoleccion &&
           datosBasicos.evaluador_id &&
-          datosBasicos.id_nino &&
+          datosBasicos.nombre_nino &&
           datosBasicos.sexo &&
           datosBasicos.fecha_nacimiento &&
           datosBasicos.rango_etario &&
@@ -180,6 +182,9 @@ export function EvaluationWizard() {
   const handleSubmit = async () => {
     setLoading(true)
     try {
+      // Generar ID aleatorio de 8 dígitos
+      const idNinoGenerado = datosBasicos.id_nino || Math.floor(10000000 + Math.random() * 90000000).toString()
+      
       const payload = {
         // Datos basicos
         departamento: datosBasicos.departamento,
@@ -188,7 +193,9 @@ export function EvaluationWizard() {
         tipo_grupo: Number(datosBasicos.tipo_grupo),
         fecha_recoleccion: datosBasicos.fecha_recoleccion,
         evaluador_id: datosBasicos.evaluador_id,
-        id_nino: datosBasicos.id_nino,
+        nombre_nino: datosBasicos.nombre_nino,
+        cedula_nino: datosBasicos.cedula_nino || null,
+        id_nino: idNinoGenerado,
         sexo: Number(datosBasicos.sexo),
         fecha_nacimiento: datosBasicos.fecha_nacimiento,
         edad_meses: datosBasicos.edad_meses,

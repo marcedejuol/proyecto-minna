@@ -17,6 +17,8 @@ export async function POST(request: Request) {
       tipo_grupo,
       fecha_recoleccion,
       evaluador_id,
+      nombre_nino,
+      cedula_nino,
       id_nino,
       sexo,
       fecha_nacimiento,
@@ -45,13 +47,13 @@ export async function POST(request: Request) {
     await sql`
       INSERT INTO registros (
         departamento, distrito, nombre_edi, tipo_grupo, fecha_recoleccion, evaluador_id,
-        id_nino, sexo, fecha_nacimiento, edad_meses, rango_etario, asistencia_edi,
+        nombre_nino, cedula_nino, id_nino, sexo, fecha_nacimiento, edad_meses, rango_etario, asistencia_edi,
         id_cuidador, parentesco, edad_cuidador, nivel_educativo, acepta_consentimiento,
         ead_motor, ead_lenguaje, ead_cognitivo, ead_socioemocional, ead_total,
         ecpp_vinculo, ecpp_estimulo, ecpp_cuidados, ecpp_total, adjuntos
       ) VALUES (
         ${departamento}, ${distrito}, ${nombre_edi}, ${tipo_grupo}, ${fecha_recoleccion}, ${evaluador_id},
-        ${id_nino}, ${sexo}, ${fecha_nacimiento}, ${edad_meses}, ${rango_etario}, ${asistencia_edi},
+        ${nombre_nino}, ${cedula_nino || null}, ${id_nino}, ${sexo}, ${fecha_nacimiento}, ${edad_meses}, ${rango_etario}, ${asistencia_edi},
         ${id_cuidador}, ${parentesco}, ${edad_cuidador}, ${nivel_educativo}, ${acepta_consentimiento},
         ${ead_motor}, ${ead_lenguaje}, ${ead_cognitivo}, ${ead_socioemocional}, ${ead_total},
         ${ecpp_vinculo}, ${ecpp_estimulo}, ${ecpp_cuidados}, ${ecpp_total}, ${adjuntosJson}::jsonb

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useCallback } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -13,6 +13,10 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { MapPin, Baby, Users } from "lucide-react"
+import {
+  DEPARTAMENTOS_PARAGUAY,
+  getCiudadesByDepartamento,
+} from "@/lib/paraguay-locations"
 
 export interface DatosBasicosData {
   departamento: string
@@ -21,6 +25,8 @@ export interface DatosBasicosData {
   tipo_grupo: string
   fecha_recoleccion: string
   evaluador_id: string
+  nombre_nino: string
+  cedula_nino: string
   id_nino: string
   sexo: string
   fecha_nacimiento: string
@@ -32,6 +38,13 @@ export interface DatosBasicosData {
   edad_cuidador: number
   nivel_educativo: string
   acepta_consentimiento: boolean
+}
+
+interface EDI {
+  id: number
+  nombre: string
+  departamento: string
+  distrito: string | null
 }
 
 interface Props {
@@ -60,9 +73,42 @@ function calcularRangoEtario(edadMeses: number): string {
 }
 
 export function Step1DatosBasicos({ data, onChange }: Props) {
+  const [edis, setEdis] = useState<EDI[]>([])
+  const [loadingEdis, setLoadingEdis] = useState(true)
+
+  const ciudades = data.departamento ? getCiudadesByDepartamento(data.departamento) : []
+
+  // Filtrar EDIs por departamento seleccionado
+  const edisDisponibles = data.departamento
+    ? edis.filter((edi) => edi.departamento === data.departamento)
+    : edis
+
+  useEffect(() => {
+    async function fetchEdis() {
+      try {
+        const res = await fetch("/api/edis")
+        if (res.ok) {
+          const data = await res.json()
+          setEdis(data)
+        }
+      } catch (error) {
+        console.error("Error fetching EDIs:", error)
+      } finally {
+        setLoadingEdis(false)
+      }
+    }
+    fetchEdis()
+  }, [])
+
   const updateField = useCallback(
     (field: keyof DatosBasicosData, value: string | number | boolean) => {
       const updated = { ...data, [field]: value }
+
+      // Si cambia el departamento, limpiar distrito y EDI
+      if (field === "departamento") {
+        updated.distrito = ""
+        updated.nombre_edi = ""
+      }
 
       if (field === "fecha_nacimiento" || field === "fecha_recoleccion") {
         const fn = field === "fecha_nacimiento" ? (value as string) : data.fecha_nacimiento
@@ -79,7 +125,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Seccion 1: Identificacion del Registro */}
+      {/* Sección 1: Identificación del Registro */}
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
@@ -96,30 +142,64 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div className="flex flex-col gap-2">
               <Label htmlFor="departamento">Departamento *</Label>
-              <Input
-                id="departamento"
-                placeholder="Ej: Central"
-                value={data.departamento}
-                onChange={(e) => updateField("departamento", e.target.value)}
-              />
+              <Select value={data.departamento} onValueChange={(v) => updateField("departamento", v)}>
+                <SelectTrigger id="departamento">
+                  <SelectValue placeholder="Seleccionar departamento..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {DEPARTAMENTOS_PARAGUAY.map((dep) => (
+                    <SelectItem key={dep.id} value={dep.id}>
+                      {dep.nombre}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="distrito">Distrito *</Label>
-              <Input
-                id="distrito"
-                placeholder="Ej: San Lorenzo"
+              <Label htmlFor="distrito">Ciudad/Distrito *</Label>
+              <Select
                 value={data.distrito}
-                onChange={(e) => updateField("distrito", e.target.value)}
-              />
+                onValueChange={(v) => updateField("distrito", v)}
+                disabled={!data.departamento}
+              >
+                <SelectTrigger id="distrito">
+                  <SelectValue placeholder="Seleccionar ciudad..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {ciudades.map((ciudad) => (
+                    <SelectItem key={ciudad} value={ciudad}>
+                      {ciudad}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="nombre_edi">Nombre del EDI *</Label>
-              <Input
-                id="nombre_edi"
-                placeholder="Nombre del Espacio de Desarrollo Infantil"
+              <Label htmlFor="nombre_edi">EDI *</Label>
+              <Select
                 value={data.nombre_edi}
-                onChange={(e) => updateField("nombre_edi", e.target.value)}
-              />
+                onValueChange={(v) => updateField("nombre_edi", v)}
+                disabled={loadingEdis || edisDisponibles.length === 0}
+              >
+                <SelectTrigger id="nombre_edi">
+                  <SelectValue
+                    placeholder={
+                      loadingEdis
+                        ? "Cargando EDIs..."
+                        : edisDisponibles.length === 0
+                          ? "No hay EDIs disponibles"
+                          : "Seleccionar EDI..."
+                    }
+                  />
+                </SelectTrigger>
+                <SelectContent>
+                  {edisDisponibles.map((edi) => (
+                    <SelectItem key={edi.id} value={edi.nombre}>
+                      {edi.nombre} {edi.distrito ? `(${edi.distrito})` : ""}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="tipo_grupo">Tipo de Grupo *</Label>
@@ -129,7 +209,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="1">1 - Intervención</SelectItem>
-                  <SelectItem value="2">2 - Control (EDI Paraguari)</SelectItem>
+                  <SelectItem value="2">2 - Control</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -146,7 +226,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
               <Label htmlFor="evaluador_id">ID Evaluador/a *</Label>
               <Input
                 id="evaluador_id"
-                placeholder="Codigo del evaluador/a"
+                placeholder="Código del evaluador/a"
                 value={data.evaluador_id}
                 onChange={(e) => updateField("evaluador_id", e.target.value)}
               />
@@ -155,7 +235,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
         </CardContent>
       </Card>
 
-      {/* Seccion 2: Datos del Nino/a */}
+      {/* Sección 2: Datos del Niño/a */}
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
@@ -171,13 +251,33 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
         <CardContent>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="id_nino">ID Niño/a *</Label>
+              <Label htmlFor="nombre_nino">Nombre del Niño/a *</Label>
+              <Input
+                id="nombre_nino"
+                placeholder="Nombre completo"
+                value={data.nombre_nino}
+                onChange={(e) => updateField("nombre_nino", e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="cedula_nino">Cédula del Niño/a</Label>
+              <Input
+                id="cedula_nino"
+                placeholder="Número de cédula (opcional)"
+                value={data.cedula_nino}
+                onChange={(e) => updateField("cedula_nino", e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="id_nino">ID Niño/a</Label>
               <Input
                 id="id_nino"
-                placeholder="Código único (anonimizado)"
+                placeholder="Se genera automáticamente"
+                className="bg-muted"
+                readOnly
                 value={data.id_nino}
-                onChange={(e) => updateField("id_nino", e.target.value)}
               />
+              <p className="text-xs text-muted-foreground">Se genera al guardar</p>
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="sexo">Sexo *</Label>
@@ -251,7 +351,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
         </CardContent>
       </Card>
 
-      {/* Seccion 3: Datos del Cuidador/a */}
+      {/* Sección 3: Datos del Cuidador/a */}
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
