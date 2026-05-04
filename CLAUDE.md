@@ -52,7 +52,7 @@ To set up the database schema, run `scripts/create-tables.sql` against the Neon 
 
 - `sexo`: 1=Masculino, 2=Femenino
 - `tipo_grupo`: 1=Grupo A, 2=Grupo B
-- `rango_etario`: 1=0–12m, 2=13–36m, 3=37–72m
+- `rango_etario`: 1=0–11m, 2=12–23m, 3=24–35m, 4=36–47m, 5=48–59m, 6=60–72m
 - `asistencia_edi`: 0=No, 1=Sí
 - `parentesco`: 1=Madre, 2=Padre, 3=Otro
 - `nivel_educativo`: 1=Primaria, 2=Secundaria, 3=Terciaria, 4=Universitaria
