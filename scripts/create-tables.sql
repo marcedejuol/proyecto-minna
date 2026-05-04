@@ -1,3 +1,14 @@
+-- Tabla de EDIs (Espacios de Desarrollo Infantil)
+CREATE TABLE IF NOT EXISTS edis (
+  id SERIAL PRIMARY KEY,
+  nombre TEXT NOT NULL,
+  departamento TEXT NOT NULL,
+  distrito TEXT,
+  activo BOOLEAN NOT NULL DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Tabla principal de evaluaciones
 CREATE TABLE IF NOT EXISTS registros (
   id_registro SERIAL PRIMARY KEY,
   -- Identificacion del Registro
@@ -8,6 +19,8 @@ CREATE TABLE IF NOT EXISTS registros (
   fecha_recoleccion DATE NOT NULL,
   evaluador_id TEXT NOT NULL,
   -- Datos del Nino/a
+  nombre_nino TEXT NOT NULL,
+  cedula_nino TEXT,
   id_nino TEXT NOT NULL,
   sexo INTEGER NOT NULL CHECK (sexo IN (1, 2)),
   fecha_nacimiento DATE NOT NULL,
@@ -26,11 +39,13 @@ CREATE TABLE IF NOT EXISTS registros (
   ead_cognitivo NUMERIC NOT NULL CHECK (ead_cognitivo >= 0),
   ead_socioemocional NUMERIC NOT NULL CHECK (ead_socioemocional >= 0),
   ead_total NUMERIC NOT NULL CHECK (ead_total >= 0),
-  -- Variables ECPP-p
+  -- Variables ECPP-P
   ecpp_vinculo NUMERIC NOT NULL CHECK (ecpp_vinculo >= 0),
   ecpp_estimulo NUMERIC NOT NULL CHECK (ecpp_estimulo >= 0),
   ecpp_cuidados NUMERIC NOT NULL CHECK (ecpp_cuidados >= 0),
   ecpp_total NUMERIC NOT NULL CHECK (ecpp_total >= 0),
+  -- Adjuntos (URLs de archivos subidos a Vercel Blob)
+  adjuntos JSONB DEFAULT '[]'::jsonb,
   -- Metadata
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
