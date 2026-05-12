@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS registros (
   departamento TEXT NOT NULL,
   distrito TEXT NOT NULL,
   nombre_edi TEXT NOT NULL,
-  tipo_grupo INTEGER NOT NULL CHECK (tipo_grupo IN (1, 2)),
+  tipo_grupo INTEGER NOT NULL CHECK (tipo_grupo IN (1, 2, 3)),
   fecha_recoleccion DATE NOT NULL,
   evaluador_id TEXT NOT NULL,
   -- Datos del Nino/a

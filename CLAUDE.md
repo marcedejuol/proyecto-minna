@@ -51,7 +51,7 @@ To set up the database schema, run `scripts/create-tables.sql` against the Neon 
 ### Domain Enumerations (integer codes stored in DB)
 
 - `sexo`: 1=Masculino, 2=Femenino
-- `tipo_grupo`: 1=Grupo A, 2=Grupo B
+- `tipo_grupo`: 1=Intervención, 2=Control, 3=Egresado de EDI
 - `rango_etario`: 1=0–11m, 2=12–23m, 3=24–35m, 4=36–47m, 5=48–59m, 6=60–72m
 - `asistencia_edi`: 0=No, 1=Sí
 - `parentesco`: 1=Madre, 2=Padre, 3=Otro

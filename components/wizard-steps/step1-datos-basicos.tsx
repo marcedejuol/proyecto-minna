@@ -210,6 +210,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                 <SelectContent>
                   <SelectItem value="1">1 - Intervención</SelectItem>
                   <SelectItem value="2">2 - Control</SelectItem>
+                  <SelectItem value="3">3 - Egresado de EDI</SelectItem>
                 </SelectContent>
               </Select>
             </div>
