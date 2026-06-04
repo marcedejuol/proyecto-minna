@@ -138,6 +138,22 @@ Configurable desde **Settings > Firewall** en el dashboard de Vercel.
 ## Notas importantes
 
 - La base de datos Neon ya esta protegida: solo tu proyecto de Vercel tiene la `DATABASE_URL` para conectarse.
+- Para usar los reportes con IA agrega tambien estas variables en **Settings > Environment Variables**:
+  ```
+  OPENAI_API_KEY=tu_api_key_de_openai
+  OPENAI_REPORT_MODEL=gpt-5.4-nano
+  REPORT_AI_MODE=basic
+  REPORT_SESSION_SECRET=texto_largo_aleatorio_para_firmar_sesiones
+  ```
+- `REPORT_AI_MODE=basic` genera reportes locales sin consumir API paga. Cambia a `REPORT_AI_MODE=openai` cuando quieras activar interpretacion con OpenAI.
+- La ruta `/reportes-ia` tiene su propio login para el usuario encargado. Los usuarios viven en la tabla `report_users` de Neon, con contrasenas hasheadas.
+- Para crear o actualizar el primer encargado ejecuta localmente:
+  ```
+  node scripts/create-report-user.mjs encargado tu_contrasena_segura
+  ```
+  El comando requiere `DATABASE_URL` configurada en el entorno.
+- Ese login no reemplaza una proteccion general del sitio si decides hacer toda la app privada.
+- Los reportes IA usan datos agregados y anonimizados; no envian nombres, cedulas, `id_nino` ni `id_cuidador` al modelo.
 - Nunca compartas las variables de entorno (`.env`) con nadie.
 - Si usas la Opcion 3, cambia la contrasena periodicamente.
 - Puedes combinar opciones (ej: Vercel Auth + Firewall) para mayor seguridad.

@@ -34,3 +34,17 @@ CREATE TABLE IF NOT EXISTS registros (
   -- Metadata
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+CREATE TABLE IF NOT EXISTS report_users (
+  id SERIAL PRIMARY KEY,
+  username TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'admin' CHECK (role IN ('admin', 'reporter')),
+  active BOOLEAN NOT NULL DEFAULT true,
+  last_login_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE report_users
+  ADD COLUMN IF NOT EXISTS role TEXT NOT NULL DEFAULT 'admin';

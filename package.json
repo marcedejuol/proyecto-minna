@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "db:init": "node --env-file=.env.local scripts/init-db.mjs",
+    "report-user": "node --env-file=.env.local scripts/create-report-user.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -49,6 +51,7 @@
     "lucide-react": "^0.544.0",
     "next": "16.1.6",
     "next-themes": "^0.4.6",
+    "openai": "^6.41.0",
     "react": "^19",
     "react-day-picker": "8.10.1",
     "react-dom": "^19",
@@ -67,8 +70,10 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^10.4.1",
     "postcss": "^8.5",
     "tailwindcss": "^3.4.17",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "typescript-eslint": "^8.60.1"
   }
 }

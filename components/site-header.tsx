@@ -2,12 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ClipboardList, BarChart3, Settings } from "lucide-react"
+import { ClipboardList, BarChart3, Settings, Bot } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navItems = [
   { href: "/", label: "Formulario", icon: ClipboardList },
   { href: "/datos", label: "Datos y Gráficos", icon: BarChart3 },
+  { href: "/reportes-ia", label: "Reportes IA", icon: Bot },
   { href: "/admin/edis", label: "Admin", icon: Settings },
 ]
 
