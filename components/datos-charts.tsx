@@ -208,7 +208,9 @@ export function DatosCharts({ data }: { data: Registro[] }) {
     const container = document.querySelector<HTMLElement>(
       `[data-chart-export-id="${chartId}"]`
     )
-    const svg = container?.querySelector("svg")
+    const svg = container?.querySelector<SVGSVGElement>(
+      ".recharts-wrapper svg.recharts-surface, .recharts-wrapper svg"
+    )
 
     if (!container || !svg) {
       throw new Error("No se encontro el grafico para exportar")
