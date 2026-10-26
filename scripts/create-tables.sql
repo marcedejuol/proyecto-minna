@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS registros (
   fecha_nacimiento DATE NOT NULL,
   edad_meses INTEGER NOT NULL CHECK (edad_meses >= 0),
   rango_etario INTEGER NOT NULL CHECK (rango_etario IN (1, 2, 3)),
-  asistencia_edi INTEGER NOT NULL CHECK (asistencia_edi IN (0, 1)),
+  asistencia_edi INTEGER NOT NULL CHECK (asistencia_edi IN (0, 1, 2)),
   -- Datos del Cuidador/a
   id_cuidador TEXT NOT NULL,
   parentesco INTEGER NOT NULL CHECK (parentesco IN (1, 2, 3)),

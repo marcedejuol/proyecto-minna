@@ -92,6 +92,7 @@ export async function GET() {
       asistenciaEdi: [
         { value: "1", label: "1 - Si" },
         { value: "0", label: "0 - No" },
+        { value: "2", label: "2 - Itinerante" },
       ],
       parentesco: [
         { value: "1", label: "1 - Madre" },

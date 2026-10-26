@@ -394,6 +394,7 @@ export function RegistroForm() {
                 <SelectContent>
                   <SelectItem value="1">1 - Si</SelectItem>
                   <SelectItem value="0">0 - No</SelectItem>
+                  <SelectItem value="2">2 - Itinerante</SelectItem>
                 </SelectContent>
               </Select>
             </div>

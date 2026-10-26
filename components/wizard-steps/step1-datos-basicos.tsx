@@ -344,6 +344,7 @@ export function Step1DatosBasicos({ data, onChange }: Props) {
                 <SelectContent>
                   <SelectItem value="1">1 - Sí</SelectItem>
                   <SelectItem value="0">0 - No</SelectItem>
+                  <SelectItem value="2">2 - Itinerante</SelectItem>
                 </SelectContent>
               </Select>
             </div>

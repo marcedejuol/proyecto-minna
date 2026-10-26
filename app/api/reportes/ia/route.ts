@@ -68,6 +68,7 @@ const labels = {
   asistencia: new Map([
     ["0", "No asiste"],
     ["1", "Asiste"],
+    ["2", "Itinerante"],
   ]),
   parentesco: new Map([
     ["1", "Madre"],
